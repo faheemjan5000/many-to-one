@@ -27,4 +27,9 @@ public class Mobile {
             referencedColumnName = "personId"
     )
     private Person person;
+
+    public Mobile(String name, String processorName) {
+        this.mobileName=name;
+        this.processorName=processorName;
+    }
 }
