@@ -26,4 +26,10 @@ public class PersonRepositoryTest {
         }
     }
 
+    @Test
+    public void addPerson(){
+        Person person = new Person("luca","luca@gmail.com");
+        personRepository.save(person);
+    }
+
 }

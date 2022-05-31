@@ -28,16 +28,8 @@ public class Person {
     }
 
     @OneToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            mappedBy = "person"
+            mappedBy = "person" //Bidirectional relation
     )
-    private List<Mobile> mobiles;
+    private List<Mobile> mobiles;  //here i guess its not needed.
 
-    public void addMobile(Mobile mobile){
-        if(mobiles==null){
-            mobiles=new ArrayList<>();
-        }
-        mobiles.add(mobile);
-    }
 }

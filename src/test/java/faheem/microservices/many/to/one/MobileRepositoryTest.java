@@ -15,8 +15,6 @@ public class MobileRepositoryTest {
     @Autowired
     private MobileRepository mobileRepository;
 
-    @Autowired
-    private PersonRepository personRepository;
 
     @Test
     public void addMobileWithPerson(){
@@ -27,9 +25,15 @@ public class MobileRepositoryTest {
     }
 
     @Test
+    public void addMobile(){
+        Mobile redmi = new Mobile("Redmi","korean");
+        mobileRepository.save(redmi);
+    }
+
+    @Test
    public void addMobileForSpecificPerson(){
-        int personId =2;
-        int mobileId = 4;
+        int personId =7;
+        int mobileId = 5;
         mobileRepository.addMobileForSpecificPerson(personId,mobileId);
    }
 
