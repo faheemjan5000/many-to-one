@@ -1,9 +1,6 @@
 package faheem.microservices.many.to.one.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @ToString
+@Builder
 public class Person {
 
     @Id
@@ -27,9 +25,34 @@ public class Person {
         this.email=email;
     }
 
+    //person has many cycles
     @OneToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "person_id",
+            referencedColumnName = "personId"
+    )
+    private List<Cycle> cycles;
+
+    private void addCycle(Cycle cycle){
+        if(cycles==null)
+            cycles = new ArrayList<>();
+        cycles.add(cycle);
+    }
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
             mappedBy = "person" //Bidirectional relation
+
     )
     private List<Mobile> mobiles;  //here i guess its not needed.
-
+/*
+    public void addMobile(Mobile mobile){
+        if(mobiles==null){
+            mobiles = new ArrayList<>();
+        }
+        mobiles.add(mobile);
+    }
+ */
 }

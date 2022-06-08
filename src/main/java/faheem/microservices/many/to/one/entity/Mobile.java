@@ -19,8 +19,7 @@ public class Mobile {
     private String processorName;
 
     @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            cascade = CascadeType.ALL
     )
     @JoinColumn(
             name = "person_id",
